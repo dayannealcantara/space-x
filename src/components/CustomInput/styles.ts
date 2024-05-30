@@ -10,4 +10,13 @@ export const Input = styled.input`
   padding: 1rem;
   border: 1px solid var(--dark-700);
   width: 100%;
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
