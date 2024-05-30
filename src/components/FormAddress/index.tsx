@@ -23,17 +23,7 @@ export interface Address {
 }
 
 interface AddressFormProps {
-  initialAddress?: {
-    id: number;
-    country: string;
-    state: string;
-    city: string;
-    street: string;
-    number: string;
-    lote: string;
-    establishment: string;
-    planet: string;
-  };
+  initialAddress?: Address;
   isEditMode?: boolean;
   onSubmit: (address: Address) => void;
 }
@@ -55,18 +45,17 @@ const FormAddress = ({ initialAddress, onSubmit }: AddressFormProps) => {
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    if (name === 'number') {
+    if (name === 'lote') {
       const newValue = value.slice(0, 4);
-      setAddress((prevAddress) => ({
+      return setAddress(prevAddress => ({
         ...prevAddress,
         [name]: newValue,
       }));
-    } else {
-      setAddress((prevAddress) => ({
-        ...prevAddress,
-        [name]: value,
-      }));
     }
+    setAddress(prevAddress => ({
+      ...prevAddress,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -140,6 +129,7 @@ const FormAddress = ({ initialAddress, onSubmit }: AddressFormProps) => {
               value={address.number}
               onChange={handleChange}
               placeholder="Número"
+              type="number"
             />
           </ContainerAddress>
         </>
@@ -150,6 +140,7 @@ const FormAddress = ({ initialAddress, onSubmit }: AddressFormProps) => {
           value={address.lote}
           onChange={handleChange}
           placeholder="Lote (4 dígitos)"
+          type="number"
         />
       )}
       <CustomButton type="submit">Salvar</CustomButton>

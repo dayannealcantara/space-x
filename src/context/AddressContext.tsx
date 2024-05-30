@@ -32,12 +32,14 @@ const AddressProvider = ({ children }: { children: ReactNode }) => {
 
   const updateAddress = (id: number, updatedAddress: Address) => {
     setAddresses(
-      addresses.map((address) => (address.id === id ? updatedAddress : address))
+      addresses.map((address: Address) =>
+        address.id === id ? updatedAddress : address
+      )
     );
   };
 
   const deleteAddress = (id: number) => {
-    setAddresses(addresses.filter((address) => address.id !== id));
+    setAddresses(addresses.filter(address => address.id !== id));
   };
 
   return (

@@ -12,7 +12,9 @@ const EditAddress = () => {
 
   const idString = id !== undefined ? id : '';
   const idNumber = Number(idString);
-  const addressToEdit = addresses.find((address) => address.id === idNumber);
+  const addressToEdit = addresses.find(
+    (address: Address) => address.id === idNumber
+  );
 
   const handleUpdateAddress = (updatedAddress: Address) => {
     updateAddress(updatedAddress.id, updatedAddress);
